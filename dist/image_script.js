@@ -1,13 +1,13 @@
 const imageUpload = document.getElementById("upload");
 Promise.all([
   faceapi.nets.faceRecognitionNet.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
+    "https://raw.githubusercontent.com/OoiYeeJing/facial-recognition/main/models/"
   ),
   faceapi.nets.faceLandmark68Net.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
+    "https://raw.githubusercontent.com/OoiYeeJing/facial-recognition/main/models/"
   ),
   faceapi.nets.ssdMobilenetv1.loadFromUri(
-    "https://raw.githubusercontent.com/willtrinh/face-recognition/master/models/"
+    "https://raw.githubusercontent.com/OoiYeeJing/facial-recognition/main/models/"
   ),
 ]).then(start);
 
@@ -52,13 +52,13 @@ LOAD LABELED IMAGES
 * ========================================== */
 function loadLabeledImages() {
   const descriptions = [];
-  const labels = ["Chandler", "Joey", "Monica", "Phoebe", "Rachel", "Ross"];
+  const labels = ["Chandler", "Joey", "Monica", "Phoebe", "Rachel", "Ross", "YeeJing"];
   return Promise.all(
     labels.map(async (label) => {
       const descriptions = [];
       for (let i = 1; i <= 5; i++) {
         const img = await faceapi.fetchImage(
-          `https://raw.githubusercontent.com/willtrinh/face-recognition/master/public/img/labeled_images/${label}/${i}.jpg`
+          `https://raw.githubusercontent.com/OoiYeeJing/facial-recognition/main/public/img/labeled_images/${label}/${i}.jpg`
         );
         const detections = await faceapi
           .detectSingleFace(img)
